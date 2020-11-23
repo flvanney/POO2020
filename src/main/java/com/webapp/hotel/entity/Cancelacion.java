@@ -1,6 +1,5 @@
-package com.webapp.hotel.cancelacion;
+package com.webapp.hotel.entity;
 
-import com.webapp.hotel.booking.*;
 import java.util.Date;
 
 import javax.persistence.Column;

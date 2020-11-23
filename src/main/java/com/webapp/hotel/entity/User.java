@@ -1,4 +1,4 @@
-package com.webapp.hotel.User;
+package com.webapp.hotel.entity;
 
 import java.util.Date;
 

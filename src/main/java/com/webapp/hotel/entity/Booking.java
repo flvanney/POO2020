@@ -1,7 +1,5 @@
-package com.webapp.hotel.booking;
+package com.webapp.hotel.entity;
 
-import com.webapp.hotel.User.*;
-import com.webapp.hotel.Room.*;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +20,8 @@ public class Booking {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="bookingId")
 	private Long id;
-    @OneToOne
-    @JoinColumn(name = "USER_ID")
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", referencedColumnName="userId")
     private User guest;
     private Date checkIn;
     private Date checkOut;
