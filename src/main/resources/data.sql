@@ -1,0 +1,1 @@
+insert into usuario (user_id, email, first_name, last_name, nationality, password, role, username) VALUES (1000, 'unnoba@unnoba.edu.ar', 'Franco', 'Vanney', 'Argentino', '$2y$12$D684s9mATk7ImDA6e4/GrO8vE4QpkWtzFqmo9OUywYXO6gx9HlF0m', 'USER', 'Vanney')

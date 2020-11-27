@@ -1,7 +1,5 @@
 package com.webapp.hotel.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,76 +14,48 @@ public class Room {
 	
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="roomId")
-	private Long id;
-	private String email;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private Date birthDate;
-	private String nationality;
+	private Long id;	
+	private String name;
+	private Float price;
+	private int occupancy;
+	private int availability;
+	private String facilities;
 	
-	@SuppressWarnings("unused")
-	private Long getId() {
+	public Long getId() {
 		return id;
 	}
-	
-	@SuppressWarnings("unused")
-	private void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@SuppressWarnings("unused")
-	private String getEmail() {
-		return email;
+	public String getName() {
+		return name;
 	}
-	
-	@SuppressWarnings("unused")
-	private void setEmail(String email) {
-		this.email = email;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	@SuppressWarnings("unused")
-	private String getPassword() {
-		return password;
+	public Float getPrice() {
+		return price;
 	}
-
-	@SuppressWarnings("unused")
-	private void setPassword(String password) {
-		this.password = password;
+	public void setPrice(Float price) {
+		this.price = price;
 	}
-
-	@SuppressWarnings("unused")
-	private String getFirstName() {
-		return firstName;
+	public int getOccupancy() {
+		return occupancy;
 	}
-
-	@SuppressWarnings("unused")
-	private void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setOccupancy(int occupancy) {
+		this.occupancy = occupancy;
 	}
-
-	public String getLastName() {
-		return lastName;
+	public int getAvailability() {
+		return availability;
 	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setAvailability(int availability) {
+		this.availability = availability;
 	}
-
-	public Date getBirthDate() {
-		return birthDate;
+	public String getFacilities() {
+		return facilities;
 	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setFacilities(String facilities) {
+		this.facilities = facilities;
 	}
 	
 }

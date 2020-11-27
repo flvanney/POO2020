@@ -1,28 +1,37 @@
 package com.webapp.hotel.entity;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
 @Table (name="Usuario")
 
-public class User {
+public class User implements UserDetails {
 	
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="userId")
     private Long id;
     private String email;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
     private Date birthDate;
     private String nationality;
+    private String role;
 
     @SuppressWarnings("unused")
 	private Long getId() {
@@ -81,5 +90,47 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+	}
+
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
     
 }
