@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+</head>
+</head>
+<body>
+	<header></header>	
+	
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>E-Mail</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Fecha de nacimiento</th>
+					<th>Nacionalidad</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="User:${usuario}">
+					<td th:text="${usuario.firstName}"></td>
+					<td th:text="${usuario.lastName}"></td>
+					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.username}"></td>
+					<td th:date="${usuario.birthDate}"></td>	
+					<td th:text="${usuario.nationality}"></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2> Por favor, complete con sus datos </h2>
+			
+			<form action="#" th:action="@{/users/new}" th:object="${User}" method="post">
+				<input type="text" name="firstName" placeholder="nombre" th:value="*{firstName}" />
+				<input type="text" name="lastName" placeholder="apellido" th:value="*{lastName}" />
+				<input type="text" name="email" placeholder="correo electronico" th:value="*{email}" />
+				<input type="text" name="username" placeholder="usuario" th:value="*{username}" />
+				<input type="password" name="password" placeholder="contraseña" th:value="*{password}" />
+				<input type="date" name="birthday" placeholder="fecha de nacimiento" th:value="*{birthDate}" />
+				<input type="text" name="nationality" placeholder="Nacionalidad" th:value="*{nationality}" />
+				<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>	
+			</form>
+	</div>
+</body>
+</html>

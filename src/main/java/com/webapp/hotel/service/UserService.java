@@ -54,7 +54,4 @@ public class UserService {
 		return userRepository.findUserByUsername(username);
 	}
 	
-	public String getmensaje() {
-		return ("Miracomoandapapa");
-	}
 }
