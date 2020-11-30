@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,17 +34,19 @@ public class UserController {
 	    return userservice.getUser(id);
 	}
 	
-	@PostMapping("/users/new")
-	public void addUser(User user) {
-		userservice.addUser(user);
-	}
 	
 	@GetMapping("/users/new")
 	public String crearUsuario(Model model){
-		User usuario=new User();
-		model.addAttribute("titulo", "Crear usuario");
-		model.addAttribute("User", usuario);
-		return "form.html";
+		model.addAttribute("User", new User());
+		return "form";
+	}
+	
+	@PostMapping("/users/new")
+	public String addUser(@ModelAttribute User user, Model model) {
+		model.addAttribute("User", user);
+		user.setRole("USER");
+		userservice.addUser(user);
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/")

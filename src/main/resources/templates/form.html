@@ -6,7 +6,7 @@
 	<header></header>	
 	
 	<div class="container">
-		<h1 th:text="${titulo}"></h1>
+		<h1>Registracion</h1>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -36,10 +36,11 @@
 			<form action="#" th:action="@{/users/new}" th:object="${User}" method="post">
 				<input type="text" name="firstName" placeholder="nombre" th:value="*{firstName}" />
 				<input type="text" name="lastName" placeholder="apellido" th:value="*{lastName}" />
-				<input type="text" name="email" placeholder="correo electronico" th:value="*{email}" />
+				<input type="text" name="email" placeholder="email" th:value="*{email}" />
 				<input type="text" name="username" placeholder="usuario" th:value="*{username}" />
 				<input type="password" name="password" placeholder="contraseña" th:value="*{password}" />
-				<input type="date" name="birthday" placeholder="fecha de nacimiento" th:value="*{birthDate}" />
+				<input type="date" name="birthDate" placeholder="fecha de nacimiento" th:value="*{birthDate}" />
+				<!-- <input type="date" name="birthDate" th:value="${birthDate.formatISO(standardDate)}"></input> -->
 				<input type="text" name="nationality" placeholder="Nacionalidad" th:value="*{nationality}" />
 				<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>	
 			</form>
