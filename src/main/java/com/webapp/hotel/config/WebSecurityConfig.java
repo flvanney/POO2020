@@ -22,13 +22,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.cors().and().csrf().disable()
-			.authorizeRequests()
-				.antMatchers("/users", "/users/new").permitAll()
-				.antMatchers(HttpMethod.POST, "/users/new").permitAll()
-				.anyRequest().authenticated()
-				.and().formLogin();
-		}
+		.cors().and().csrf().disable()
+		.authorizeRequests()
+			.antMatchers("/users", "/users/new").permitAll()
+			.antMatchers(HttpMethod.POST, "/users/new").permitAll()
+			.anyRequest().authenticated()
+			.and().formLogin()
+		.and()
+			.logout()
+			.logoutSuccessUrl("/login")
+		;
+	}
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();

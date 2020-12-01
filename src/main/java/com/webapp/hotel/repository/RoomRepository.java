@@ -17,6 +17,9 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
 			@Param("fechaInicio") Date fechaInicio,
 			@Param("fechaFin") Date fechaFin,
 			@Param("cantPersonas") int cantPersonas);
+	
+	@Query(value="select * from Room", nativeQuery = true)
+	public List<Room> findRooms();
 }
 /*
  * select r 
