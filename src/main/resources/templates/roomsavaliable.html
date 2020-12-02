@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+</head>
+</head>
+<body>
+	<header></header>	
+	
+<div class="container">
+		<h1>Habitaciones Disponibles</h1>		
+		<h2> Por favor, complete los datos solicitados </h2>
+</div>
+<div>		
+	<form action="#" th:action="@{/rooms/disponibles}" th:class="${consulta}" method="post">
+		<input type="date" name="fechaInicio" placeholder="fecha de Inicio" th:value="*{fechaInicio}" />
+		<input type="date" name="fechaFin" placeholder="fecha de Fin" th:value="*{fechaFin}" />
+		<input type="number" name="cantPersonas" placeholder="Cantidad de personas" th:value="*{cantpersonas}" />
+		<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>	
+	</form>
+</div>
+
+</body>
+</html>

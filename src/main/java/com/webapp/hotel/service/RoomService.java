@@ -1,11 +1,13 @@
 package com.webapp.hotel.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webapp.hotel.entity.Consulta;
 import com.webapp.hotel.entity.Room;
 import com.webapp.hotel.repository.RoomRepository;
 
@@ -26,4 +28,9 @@ public class RoomService {
 	public List<Room> encontrarRooms(){
 		return roomRepository.findRooms();
 	}
+	
+	public List<Room> findAvaliblesRooms(Consulta consulta){
+		return roomRepository.findAvaliblesRooms(consulta.getFechaInicio(), consulta.getFechaFin(), consulta.getCantPersonas());
+	}
+	
 }
