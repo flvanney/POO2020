@@ -1,14 +1,34 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Hotelapp 1.0</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 </head>
+  <title>Hotel Nashe</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
 <body>
-    <h1>Pagina principal, Que haces troesma?</h1>
-    <h2>Vokita, el mas grande papá</h2>
-    <form th:action="@{/logout}" method="GET" name="logoutForm" id="logout">
-      <button type="submit" value="Sign Out">Logout</button>
-    </form>
+  <h1>Bienvenido a Hotel Nashe, el hotel más ido</h1>
+  <h2>Inicie sesión o registre un usuario</h2>
+
+  <div class="container">
+    <div class="row">
+      <form th:action="@{/login]" method="GET" name="loginForm" id="login">
+        <button type="submit" class="btn btn-primary" value="Sign In">Iniciar sesión</button>
+      </form>
+  
+      <a href="form.html" class="btn btn-info" role="button">Registro</a>
+
+      <!-- <form th:action="@{/logout}" method="GET" name="logoutForm" id="logout">
+        <button type="submit" class="btn btn-secondary"value="Sign Out">Cerrar sesión</button>
+      </form> -->
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>
