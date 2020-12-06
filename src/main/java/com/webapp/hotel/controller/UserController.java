@@ -16,13 +16,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webapp.hotel.service.UserService;
 import com.webapp.hotel.entity.User;
 
-
-
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserService userservice;
+	
+	// Formulario de login
+	@RequestMapping("/login.html")
+	public String login() {
+	  return "login.html";
+	}
+  
+	// Formulario de login con error
+	@RequestMapping("/login-error.html")
+	public String loginError(Model model) {
+	  model.addAttribute("loginError", true);
+	  return "login.html";
+	}
 	
 	@GetMapping("/users")
 	public List<User> retriveAllUsers(){
@@ -53,4 +64,21 @@ public class UserController {
 	public String saludo() {
 		return "index";
 	}
+}
+
+@ControllerAdvice
+
+public class ErrorController {
+
+    private static Logger logger = LoggerFactory.getLogger(ErrorController.class);
+
+    @ExceptionHandler(Throwable.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String exception(final Throwable throwable, final Model model) {
+        logger.error("Exception during execution of SpringSecurity application", throwable);
+        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
+        model.addAttribute("errorMessage", errorMessage);
+        return "error";
+    }
+
 }
