@@ -29,4 +29,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
  * 		from Booking b 
  * 		where :fechaInicio >= checkOut OR :fechaFin <= checkIn;) 
  * and occupancy >= :cantPersonas
+ *probando la wea 
  */
+ 
