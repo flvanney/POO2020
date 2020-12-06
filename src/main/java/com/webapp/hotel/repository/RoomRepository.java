@@ -13,7 +13,7 @@ import com.webapp.hotel.entity.Room;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 	
 	/*@Query( "select r from Room r where r in (select b from Booking b where :fechaInicio >= b.checkOut OR :fechaFin <= b.checkIn) and r.occupancy >= :cantPersonas")*/
-	@Query ( "select r.name from room r where r.room_id not in (select room_id from booking b natural join room r where :fechaInicio >= b.check_out OR :fechaFin <= b.check_in) and cantPersonas <= r.occupancy")
+	@Query ( "select r.name from room r where r.room_id  in (select room_id from booking b left join room r on b.room_id=r.room_id where :fechaInicio >= b.check_out OR :fechaFin <= b.check_in) and cantPersonas <= r.occupancy")
 	public List<Room> findAvaliblesRooms(
 			@Param("fechaInicio") Date fechaInicio,
 			@Param("fechaFin") Date fechaFin,
