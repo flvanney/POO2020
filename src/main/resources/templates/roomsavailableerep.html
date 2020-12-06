@@ -21,9 +21,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="habitaciones : ${room}"></tr>
-				<tr th:each="habitacion : ${habitaciones}">
+				<tr th:each="habitacion : ${room}">
 					<td th:text="${habitacion.name}"></td>
+					<td th:text="${habitacion.facilities}"></td>
+					<td th:text="${habitacion.occupancy}"></td>
 					<td th:text="${habitacion.price}"></td>
 				</tr>
 			</tbody>
