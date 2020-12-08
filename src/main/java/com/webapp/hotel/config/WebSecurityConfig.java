@@ -28,9 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/users/new").permitAll()
 			.anyRequest().authenticated()
 			.and().formLogin()
+			.loginPage("/login.html")
+			.failureUrl("/error.html")
 		.and()
 			.logout()
-			.logoutSuccessUrl("/login")
+			.logoutSuccessUrl("/index.html")
 		;
 	}
 	@Bean
