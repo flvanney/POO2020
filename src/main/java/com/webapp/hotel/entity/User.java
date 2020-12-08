@@ -35,8 +35,7 @@ public class User implements UserDetails {
     private String nationality;
     private String role;
 
-    @SuppressWarnings("unused")
-	private Long getId() {
+	public Long getId() {
 		return id;
 	}
 	

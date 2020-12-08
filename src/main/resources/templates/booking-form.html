@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+</head>
+</head>
+<body>
+	<header></header>
+
+	<div class="container">
+		<h1 th:text="${Room.name}"></h1>
+		<h2>Alquiler</h2>
+	</div>
+
+	<div class="habitacion">
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Facilidades</th>
+					<th>Ocupacion maxima</th>
+					<th>Precio</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="${Room.name}"></td>
+					<td th:text="${Room.facilities}"></td>
+					<td th:text="${Room.occupancy}"></td>
+					<td th:text="${Room.price}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="form">
+		<form action="#" th:action="@{/rooms/{id}(id=${Room.id})}" th:object="${Booking}" method="post">
+			<input type="date" name="fechaInicio" placeholder="fecha de Inicio" th:value="${checkIn}" /> 
+			<input type="date" name="fechaFin" placeholder="fecha de Fin" th:value="${checkOut}" />
+			<input type="checkbox" name="active" placeholder="Incluir desayuno" th:checked="${breakfastIncluded}" />
+			<input type="checkbox" name="active" placeholder="Incluir estacionamiento" th:checked="${parking}" />
+			<input type="checkbox" name="active" placeholder="Incluir cancelacion gratuita" th:checked="${freeCancelation}" />
+			<p>
+				<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+			</p>
+		</form>
+	</div>

@@ -1,4 +1,4 @@
- 	package com.webapp.hotel.service;
+package com.webapp.hotel.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -22,10 +22,6 @@ public class RoomService {
 	
 	public Room getRoom(Long id) {
 	    return roomRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
-	}
-	
-	public List<Room> encontrarRooms(){
-		return roomRepository.findRooms();
 	}
 	
 	public List<Room> findAvaliblesRooms(Consulta consulta){

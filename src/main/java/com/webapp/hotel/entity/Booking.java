@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table (name="Booking")
 
@@ -23,8 +25,11 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "USER_ID", referencedColumnName="userId")
     private User guest;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkIn;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkOut;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")	
     private Date createdAt;
     @ManyToOne
     @JoinColumn(name = "ROOM_ID", referencedColumnName="roomId")
