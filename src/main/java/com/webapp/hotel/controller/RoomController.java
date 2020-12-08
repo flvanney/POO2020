@@ -36,7 +36,7 @@ public class RoomController {
 	@PostMapping("/rooms/disponibles")
 	public String findAvaliableRooms(@ModelAttribute Consulta consulta, Model model){
 		model.addAttribute("consulta", consulta);
-		List<Room> habitaciones = roomService.encontrarRooms();
+		List<Room> habitaciones = roomService.findAvaliblesRooms(consulta);
 		model.addAttribute("room", habitaciones);
 		return "roomsavailableerep";
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,16 +24,16 @@ public class UserController {
 	private UserService userservice;
 	
 	// Formulario de login
-	@RequestMapping("/login.html")
+	@GetMapping("/login")
 	public String login() {
-	  return "login.html";
+	  return "login";
 	}
   
 	// Formulario de login con error
-	@RequestMapping("/login-error.html")
+	@GetMapping("/login-error")
 	public String loginError(Model model) {
 	  model.addAttribute("loginError", true);
-	  return "login.html";
+	  return "login";
 	}
 	
 	@GetMapping("/users")
@@ -66,19 +67,20 @@ public class UserController {
 	}
 }
 
-@ControllerAdvice
 
-public class ErrorController {
-
-    private static Logger logger = LoggerFactory.getLogger(ErrorController.class);
-
-    @ExceptionHandler(Throwable.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String exception(final Throwable throwable, final Model model) {
-        logger.error("Exception during execution of SpringSecurity application", throwable);
-        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
-        model.addAttribute("errorMessage", errorMessage);
-        return "error";
-    }
-
-}
+//@ControllerAdvice
+//
+//public class ErrorController {
+//
+//    private static Logger logger = LoggerFactory.getLogger(ErrorController.class);
+//
+//    @ExceptionHandler(Throwable.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public String exception(final Throwable throwable, final Model model) {
+//        logger.error("Exception during execution of SpringSecurity application", throwable);
+//        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
+//        model.addAttribute("errorMessage", errorMessage);
+//        return "error";
+//    }
+//
+//}

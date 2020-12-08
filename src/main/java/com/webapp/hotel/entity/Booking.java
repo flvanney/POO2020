@@ -26,8 +26,8 @@ public class Booking {
     private Date checkIn;
     private Date checkOut;
     private Date createdAt;
-    @OneToOne
-    @JoinColumn(name = "ROOM_ID")
+    @ManyToOne
+    @JoinColumn(name = "ROOM_ID", referencedColumnName="roomId")
     private Room room;
     private boolean breakfastIncluded;
     private boolean parking;

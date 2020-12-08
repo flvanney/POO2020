@@ -30,6 +30,7 @@ public class RoomService {
 	
 	public List<Room> findAvaliblesRooms(Consulta consulta){
 		return roomRepository.findAvaliblesRooms(consulta.getFechaInicio(), consulta.getFechaFin(), consulta.getCantPersonas());
+		
 	}
 	
 }
