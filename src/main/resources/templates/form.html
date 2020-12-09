@@ -2,19 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Registro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
-	
-	<header></header>		
-	
-	<div class="container">
-		<h1>Formulario de registro</h1>
-		
-		<!--
+
+    <header></header>
+
+    <div class="container" align="center">
+
+        <h1>Formulario de registro</h1>
+
+        <!--
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -39,58 +41,63 @@
 			</tbody>
 		</table>
 		-->
-		
-		<h2> Por favor, complete con sus datos </h2>			
-			<form action="#" th:action="@{/users/new}" th:object="${User}" method="post">
-				<div class="form-group">
-				<label for="InputNombre">Nombre</label>
-				<input type="text" name="firstName" class="form-control" id="inputNombre" placeholder="Ingrese su nombre" th:value="*{firstName}">
-				</div>
-				<div class="form-group">
-				<label for="InputApellido">Apellido</label>
-				<input type="text" name="lastName" class="form-control" id="inputApellido" placeholder="Ingrese su apellido" th:value="*{lastName}">
-				</div>
-				<div class="form-group">
-				<label for="InputEmail">E-mail</label>
-				<input type="text" name="email" class="form-control" id="inputEmail" placeholder="Ingrese su e-mail" th:value="*{email}">
-				</div>
-				<div class="form-group">
-				<label for="InputUsername">Nombre de usuario</label>
-				<input type="text" name="username" class="form-control" id="inputUsername" placeholder="Ingrese su nombre de usuario" th:value="*{username}">
-				</div>
-				<div class="form-group">
-				<label for="InputPassword">Contraseña</label>
-				<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña" th:value="*{password}">
-				</div>
-				<div class="form-group">
-				<label for="InputBirthDate">Fecha de nacimiento</label>
-				<input type="date" name="birthDate" class="form-control" id="inputBirthDate" placeholder="Ingrese su fecha de nacimiento" th:value="*{birthDate}">
-				</div>
-				<div class="form-group">
-				<label for="InputNationality">Nacionalidad</label>
-				<select id="InputNationality" name="nationality" class="form-control" th:value="*{nationality}">
-					<option selected>Seleccione un país</option>
+
+        <p></p>
+        <h2>Por favor, complete con sus datos.</h2>
+        <p></p>
+
+        <hr/>
+
+        <form action="#" th:action="@{/users/new}" th:object="${User}" method="post">
+            <div class="form-floating mb-3 col-sm-5">
+                <input type="text" name="firstName" class="form-control" id="InputNombre" placeholder="Ingrese su nombre" th:value="*{firstName}" required>
+                <label for="InputNombre">Nombre</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-5">
+                <input type="text" name="lastName" class="form-control" id="InputApellido" placeholder="Ingrese su apellido" th:value="*{lastName}" required>
+                <label for="InputApellido">Apellido</label>
+            </div>
+            <div class="form-floating mb-2 col-sm-5">
+                <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Ingrese su correo electrónico" th:value="*{email}" required>
+                <label for="InputEmail">Correo electrónico</label>
+                <small id="emailHelp" class="form-text text-muted">No compartiremos su correo electrónico con nadie.</small>
+            </div>
+            <div class="form-floating mb-3 col-sm-5">
+                <input type="text" name="username" class="form-control" id="InputUsername" placeholder="Ingrese su nombre de usuario" th:value="*{username}" required>
+                <label for="InputUsername">Nombre de usuario</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-5">
+                <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña" th:value="*{password}" required>
+                <label for="InputPassword">Contraseña</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-5">
+                <input type="date" name="birthDate" class="form-control" id="InputBirthDate" placeholder="Ingrese su fecha de nacimiento" th:value="*{birthDate}" required>
+                <label for="InputBirthDate">Fecha de nacimiento</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-5">
+                <select id="InputNationality" name="nationality" class="form-select" th:value="*{nationality}" required>
+					<option selected disabled>Seleccione un país</option>
 					<option>Argentina</option>
 					<option>Brasil</option>
 					<option>Uruguay</option>
 					<option>Chile</option>
 					<option>Bolivia</option>
-				  </select>
-				<!-- <input type="text" name="nationality" class="form-control" id="InputNationality" placeholder="Ingrese su país de nacionalidad" th:value="*{nationality}"> -->
-				</div>
-				<div class="form-group form-check">
-				<input type="checkbox" class="form-check-input" id="Check1">
-				<label class="form-check-label" for="Check1">Acepto los términos y condiciones.</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Registrar</button>
-				<button type="reset" class="btn btn-secondary">Reestablecer campos</button>
-			</form>
-		
-	</div>
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+				</select>
+                <label for="InputNationality">Nacionalidad</label>
+            </div>
+            <div class="mb-3 checkbox">
+                <input type="checkbox" class="form-check-input" id="Check1" required>
+                <label class="form-check-label" for="Check1">Acepto los términos y condiciones.</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Registrarse</button>
+            <button type="reset" class="btn btn-secondary btn-lg">Reestablecer campos</button>
+        </form>
+
+    </div>
+
+    <!-- Bundle de dependencias de Bootstrap (por las dudas). -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
