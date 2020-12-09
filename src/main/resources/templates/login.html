@@ -21,7 +21,7 @@
 
         <p th:if="${loginError}" class="error">Usuario o contraseña incorrecto</p>
 
-        <form th:action="@{/login.html}" method="post">
+        <form th:action="@{/login}" method="post">
             <div class="form-floating mb-3 col-sm-4">
                 <input type="text" name="username" class="form-control" id="InputUsername" placeholder="Ingrese su nombre de usuario" th:value="*{username}" required>
                 <label for="InputUsername">Nombre de usuario</label>
