@@ -32,11 +32,16 @@
 	</div>
 	<div class="form">
 		<form action="#" th:action="@{/rooms/{id}(id=${Room.id})}" th:object="${Booking}" method="post">
-			<input type="date" name="fechaInicio" placeholder="fecha de Inicio" th:value="${checkIn}" /> 
-			<input type="date" name="fechaFin" placeholder="fecha de Fin" th:value="${checkOut}" />
-			<input type="checkbox" name="active" placeholder="Incluir desayuno" th:checked="${breakfastIncluded}" />
-			<input type="checkbox" name="active" placeholder="Incluir estacionamiento" th:checked="${parking}" />
-			<input type="checkbox" name="active" placeholder="Incluir cancelacion gratuita" th:checked="${freeCancelation}" />
+			<label for="checkIn">Check In</label>
+			<input type="date" name="checkIn" placeholder="fecha de Inicio" th:value="*{checkIn}" />
+			<label for="checkIn">Check Out</label>
+			<input type="date" name="checkOut" placeholder="fecha de Fin" th:value="*{checkOut}" />
+			<label for="checkIn">Desayuno incluido</label>
+			<input type="checkbox" name="breakfastIncluded" placeholder="Incluir desayuno" th:checked="*{breakfastIncluded}" />
+			<label for="checkIn">Estacionamiento</label>
+			<input type="checkbox" name="parking" placeholder="Incluir estacionamiento" th:checked="*{parking}" />
+			<label for="checkIn">Cancelacion Gratis</label>
+			<input type="checkbox" name="freeCancelation" placeholder="Incluir cancelacion gratuita" th:checked="*{freeCancelation}" />
 			<p>
 				<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 			</p>

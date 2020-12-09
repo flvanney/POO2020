@@ -9,16 +9,17 @@
 </head>
 
 <body>
-  <h1>Bienvenido a Hotel Nashe, el hotel más ido</h1>
+<!--   <h1>Bienvenido a Hotel Nashe, el hotel más ido</h1> -->
+  <h1>Hotel App 1.0</h1>
   <h2>Inicie sesión o registre un usuario</h2>
 
   <div class="container">
     <div class="row">
-      <form th:action="@{/login]" method="GET" name="loginForm" id="login">
+      <form th:action="@{/login}" method="GET" name="loginForm" id="login">
         <button type="submit" class="btn btn-primary" value="Sign In">Iniciar sesión</button>
       </form>
   
-      <a href="form.html" class="btn btn-info" role="button">Registro</a>
+      <a href="/users/new" class="btn btn-info" role="button">Registro</a>
 
       <!-- <form th:action="@{/logout}" method="GET" name="logoutForm" id="logout">
         <button type="submit" class="btn btn-secondary"value="Sign Out">Cerrar sesión</button>

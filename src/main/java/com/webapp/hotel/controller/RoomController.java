@@ -57,9 +57,9 @@ public class RoomController {
 	}
 	
 	@PostMapping("/rooms/{id}")
-	public String addBook(@ModelAttribute Booking booking, @ModelAttribute Room room, Model model) {
+	public String addBook(@ModelAttribute Booking booking, Room room, Model model) {
 		model.addAttribute("Booking", booking);
-		model.addAttribute("Room", room);
+		//model.addAttribute("Room", room);
 		booking.setRoom(room);
 		booking.setCreatedAt(new Date());
 		bookService.addBook(booking);

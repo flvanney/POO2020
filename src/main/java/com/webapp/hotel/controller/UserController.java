@@ -61,10 +61,6 @@ public class UserController {
 		return "redirect:/login";
 	}
 	
-	@GetMapping("/")
-	public String saludo() {
-		return "index";
-	}
 }
 
 
