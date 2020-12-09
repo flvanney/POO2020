@@ -28,10 +28,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/users/new").permitAll()
 			.anyRequest().authenticated()
 			.and().formLogin()
-			//.loginPage("/login.html")
+		//.formLogin()
+			//.loginPage("/login")
+			//.permitAll()
+			//.defaultSuccessUrl("/index", true)
 			//.failureUrl("/error.html")
 		.and()
-			.logout()
+			.logout().permitAll()
 			.logoutSuccessUrl("/index")
 		;
 	}
