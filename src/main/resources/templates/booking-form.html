@@ -1,38 +1,77 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Reserva de habitación</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 </head>
-</head>
+
 <body>
-	<header></header>
 
-	<div class="container">
-		<h1 th:text="${Room.name}"></h1>
-		<h2>Alquiler</h2>
-	</div>
+    <header></header>
 
-	<div class="habitacion">
-		<table>
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Facilidades</th>
-					<th>Ocupacion maxima</th>
-					<th>Precio</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td th:text="${Room.name}"></td>
-					<td th:text="${Room.facilities}"></td>
-					<td th:text="${Room.occupancy}"></td>
-					<td th:text="${Room.price}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="form">
-		<form action="#" th:action="@{/rooms/{id}(id=${Room.id})}" th:object="${Booking}" method="post">
-			<label for="checkIn">Check In</label>
+    <div class="container" align="center">
+        <h1 th:text="${Room.name}"></h1>
+        <h2>Alquiler</h2>
+    </div>
+
+    <div class="habitacion" align="center">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Facilidades</th>
+                    <th>Ocupacion maxima</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${Room.name}"></td>
+                    <td th:text="${Room.facilities}"></td>
+                    <td th:text="${Room.occupancy}"></td>
+                    <td th:text="${Room.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+    <div class="container" align="center">
+        <form action="#" th:action="@{/rooms/{id}(id=${Room.id})}" th:object="${Booking}" method="post">
+
+            <div class="form-floating mb-3 col-sm-2">
+                <input type="date" name="checkIn" class="form-control" id="InputCheckIn" placeholder="Ingrese la fecha de entrada" th:value="*{checkIn}" required>
+                <label for="InputCheckIn">Fecha de entrada</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-2">
+                <input type="date" name="checkOut" class="form-control" id="InputCheckOut" placeholder="Ingrese la fecha de salida" th:value="*{checkOut}" required>
+                <label for="InputCheckOut">Fecha de salida</label>
+            </div>
+            <div class="mb-3 checkbox">
+                <input type="checkbox" class="form-check-input" id="InputDesayuno" th:checked="*{breakfastIncluded}">
+                <label class="form-check-label" for="InputDesayuno">Desayuno incluido</label>
+            </div>
+            <div class="mb-3 checkbox">
+                <input type="checkbox" class="form-check-input" id="InputEstacionamiento" th:checked="*{parking}">
+                <label class="form-check-label" for="InputEstacionamiento">Estacionamiento incluido</label>
+            </div>
+            <div class="mb-3 checkbox">
+                <input type="checkbox" class="form-check-input" id="InputCancelacion" th:checked="*{freeCancelation}">
+                <label class="form-check-label" for="InputCancelacion">Cancelación gratis</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Reservar</button>
+            <button type="reset" class="btn btn-secondary">Reestablecer campos</button>
+
+            <!-- Formulario anterior, sin bootstrap
+
+            <label for="checkIn">Check In</label>
 			<input type="date" name="checkIn" placeholder="fecha de Inicio" th:value="*{checkIn}" />
 			<label for="checkIn">Check Out</label>
 			<input type="date" name="checkOut" placeholder="fecha de Fin" th:value="*{checkOut}" />
@@ -45,5 +84,16 @@
 			<p>
 				<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 			</p>
-		</form>
-	</div>
+			
+			-->
+
+        </form>
+
+    </div>
+
+    <!-- Bundle de dependencias de Bootstrap (por las dudas). -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

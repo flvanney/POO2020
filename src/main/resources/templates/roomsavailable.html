@@ -1,25 +1,64 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Consulta de habitaciones</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 </head>
-</head>
+
 <body>
-	<header></header>	
-	
-<div class="container">
-		<h1>Habitaciones Disponibles</h1>		
-		<h2> Por favor, complete los datos solicitados </h2>
-</div>
-<div>		
-	<form action="#" th:action="@{/rooms/disponibles}" th:class="${consulta}" method="post">
-		<label for="checkIn">Check In</label>
-		<input type="date" name="fechaInicio" placeholder="fecha de Inicio" th:value="*{fechaInicio}" />
-		<label for="checkOut">Check Out</label>
-		<input type="date" name="fechaFin" placeholder="fecha de Fin" th:value="*{fechaFin}" />
-		<label for="cantPersonas">Cantidad de Personas</label>
-		<input type="number" name="cantPersonas" placeholder="Cantidad de personas" th:value="*{cantpersonas}" />
-		<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>	
-	</form>
-</div>
+
+    <header></header>
+
+    <div class="container" align="center">
+
+        <h1>Habitaciones disponibles</h1>
+        <p></p>
+        <h2>Por favor, complete los datos solicitados</h2>
+
+        <hr/>
+
+        <form action="#" th:action="@{/rooms/disponibles}" th:class="${consulta}" method="post">
+
+            <div class="form-floating mb-3 col-sm-2">
+                <input type="date" name="fechaInicio" class="form-control" id="InputFechaInicio" placeholder="Ingrese la fecha de entrada" th:value="*{fechaInicio}" required>
+                <label for="InputFechaInicio">Fecha de entrada</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-2">
+                <input type="date" name="fechaFin" class="form-control" id="InputFechaFin" placeholder="Ingrese la fecha de salida" th:value="*{fechaFin}" required>
+                <label for="InputFechaFin">Fecha de salida</label>
+            </div>
+            <div class="form-floating mb-3 col-sm-2">
+                <input type="number" name="cantPersonas" class="form-control" id="InputPersonas" placeholder="Ingrese la cantidad de personas" th:value="*{cantpersonas}" required>
+                <label for="InputPersonas">Cantidad de personas</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+            <button type="reset" class="btn btn-secondary">Reestablecer campos</button>
+
+            <!-- Formulario anterior, sin bootstrap
+				
+			<label for="checkIn">Check In</label>
+			<input type="date" name="fechaInicio" placeholder="fecha de Inicio" th:value="*{fechaInicio}" />
+			<label for="checkOut">Check Out</label>
+			<input type="date" name="fechaFin" placeholder="fecha de Fin" th:value="*{fechaFin}" />
+			<label for="cantPersonas">Cantidad de Personas</label>
+			<input type="number" name="cantPersonas" placeholder="Cantidad de personas" th:value="*{cantpersonas}" />
+			<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+			
+			-->
+
+        </form>
+
+    </div>
+
+    <!-- Bundle de dependencias de Bootstrap (por las dudas). -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
