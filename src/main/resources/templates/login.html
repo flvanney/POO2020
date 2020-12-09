@@ -2,14 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Inicio de sesión</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<title>Inicio de sesiÃ³n</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
-  <body>
-    <h1>Por favor, inicie sesión</h1>
-    <p th:if="${loginError}" class="error">Usuario o contraseña incorrecto</p>
+  
+<body>
+    
+    <h1>Por favor, inicie sesiÃ³n</h1>
+    
+    <p th:if="${loginError}" class="error">Usuario o contraseÃ±a incorrecto</p>
+    
     <form th:action="@{/login.html}" method="post">
         <div class="form-group row">
 			<label for="InputUsername" class="col-sm-2 col-form-label">Nombre de usuario</label>
@@ -18,12 +22,14 @@
         	</div>
         </div>
 		<div class="form-group row">
-        	<label for="InputPassword" class="col-sm-2 col-form-label">Contraseña</label>
+        	<label for="InputPassword" class="col-sm-2 col-form-label">ContraseÃ±a</label>
         	<div class="col-sm-3">
-				<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseña" th:value="*{password}">
+				<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Ingrese su contraseÃ±a" th:value="*{password}">
         	</div>
         </div>
-      <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      <button type="submit" class="btn btn-primary">Iniciar sesiÃ³n</button>
     </form>
-  </body>
+
+</body>
+
 </html>

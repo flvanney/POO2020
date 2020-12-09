@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-</head>
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+	
 	<header></header>		
+	
 	<div class="container">
 		<h1>Formulario de registro</h1>
 		
@@ -66,7 +68,7 @@
 				</div>
 				<div class="form-group">
 				<label for="InputNationality">Nacionalidad</label>
-				<select id="InputNationality" class="form-control">
+				<select id="InputNationality" name="nationality" class="form-control" th:value="*{nationality}">
 					<option selected>Seleccione un país</option>
 					<option>Argentina</option>
 					<option>Brasil</option>
@@ -81,7 +83,7 @@
 				<label class="form-check-label" for="Check1">Acepto los términos y condiciones.</label>
 				</div>
 				<button type="submit" class="btn btn-primary">Registrar</button>
-				<button type="reset" class="btn btn-secondary">Reestabler campos</button>
+				<button type="reset" class="btn btn-secondary">Reestablecer campos</button>
 			</form>
 		
 	</div>
