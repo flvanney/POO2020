@@ -1,5 +1,6 @@
 package com.webapp.hotel.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,9 +27,9 @@ public class Booking {
     @JoinColumn(name = "USER_ID", referencedColumnName="userId")
     private User guest;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date checkIn;
+    private LocalDate checkIn;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date checkOut;
+    private LocalDate checkOut;
     @DateTimeFormat(pattern = "yyyy-MM-dd")	
     private Date createdAt;
     @ManyToOne
@@ -37,6 +38,9 @@ public class Booking {
     private boolean breakfastIncluded;
     private boolean parking;
     private boolean freeCancelation;
+    public static final Float BREAKFASTCOST = 100.00f; //Costos como variables estaticas
+    public static final Float PARKINGCOST = 100.00f;
+    public static final Float FREECANCELATIONCOST = 500.00f;
     private Float cost;
 	
     
@@ -52,16 +56,16 @@ public class Booking {
 	public void setGuest(User guest) {
 		this.guest = guest;
 	}
-	public Date getCheckIn() {
+	public LocalDate getCheckIn() {
 		return checkIn;
 	}
-	public void setCheckIn(Date checkIn) {
+	public void setCheckIn(LocalDate checkIn) {
 		this.checkIn = checkIn;
 	}
-	public Date getCheckOut() {
+	public LocalDate getCheckOut() {
 		return checkOut;
 	}
-	public void setCheckOut(Date checkOut) {
+	public void setCheckOut(LocalDate checkOut) {
 		this.checkOut = checkOut;
 	}
 	public Date getCreatedAt() {

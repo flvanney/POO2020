@@ -27,7 +27,7 @@
                     <th>Nombre</th>
                     <th>Facilidades</th>
                     <th>Ocupacion maxima</th>
-                    <th>Precio</th>
+                    <th>Precio por dia</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
     <div class="container" align="center">
         <form action="#" th:action="@{/rooms/{id}(id=${Room.id})}" th:object="${Booking}" method="post">
 
-            <div class="form-floating mb-3 col-sm-2">
+            <!--<div class="form-floating mb-3 col-sm-2">
                 <input type="date" name="checkIn" class="form-control" id="InputCheckIn" placeholder="Ingrese la fecha de entrada" th:value="*{checkIn}" required>
                 <label for="InputCheckIn">Fecha de entrada</label>
             </div>
@@ -63,31 +63,33 @@
                 <label class="form-check-label" for="InputEstacionamiento">Estacionamiento incluido</label>
             </div>
             <div class="mb-3 checkbox">
-                <input type="checkbox" class="form-check-input" id="InputCancelacion" th:checked="*{freeCancelation}">
+                <input type="checkbox" class="form-check-input" id="InputCancelacion" name="freeCancelation" th:checked="*{freeCancelation}">
                 <label class="form-check-label" for="InputCancelacion">Cancelación gratis</label>
             </div>
             <button type="submit" class="btn btn-primary">Reservar</button>
-            <button type="reset" class="btn btn-secondary">Reestablecer campos</button>
+            <button type="reset" class="btn btn-secondary">Reestablecer campos</button> -->
 
-            <!-- Formulario anterior, sin bootstrap
+           <!--  Formulario anterior, sin bootstrap -->
 
             <label for="checkIn">Check In</label>
 			<input type="date" name="checkIn" placeholder="fecha de Inicio" th:value="*{checkIn}" />
 			<label for="checkIn">Check Out</label>
 			<input type="date" name="checkOut" placeholder="fecha de Fin" th:value="*{checkOut}" />
-			<label for="checkIn">Desayuno incluido</label>
+			<label for="checkIn">Incluir Desayuno ($100)</label>
 			<input type="checkbox" name="breakfastIncluded" placeholder="Incluir desayuno" th:checked="*{breakfastIncluded}" />
-			<label for="checkIn">Estacionamiento</label>
+			<label for="checkIn">Incluir Estacionamiento ($100)</label>
 			<input type="checkbox" name="parking" placeholder="Incluir estacionamiento" th:checked="*{parking}" />
-			<label for="checkIn">Cancelacion Gratis</label>
+			<label for="checkIn">Cancelacion Gratis* ($500)</label>
 			<input type="checkbox" name="freeCancelation" placeholder="Incluir cancelacion gratuita" th:checked="*{freeCancelation}" />
 			<p>
 				<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 			</p>
 			
-			-->
+			
 
         </form>
+        
+        <p>*48hs antes de la fecha del Check In, en caso contrario el reembolso sera del 80%</p>
 
     </div>
 

@@ -36,5 +36,17 @@ public class BookService {
 		return bookRepository.findAllbyUserid(user.getId());
 	}
 
+	public float calcularPrecio(Float cost, boolean breakfastIncluded, boolean parking, boolean freeCancelation, long dias) {
+		Float extras = 0.0f;
+		Float costototal = 0.0f;
+		if (breakfastIncluded = true);
+			extras += Booking.BREAKFASTCOST;
+		if (parking = true);
+			extras += Booking.PARKINGCOST;
+		if (freeCancelation = true);
+			extras += Booking.FREECANCELATIONCOST;
+		costototal = (cost+extras)*dias;
+		return costototal;
+	}
 		
 }

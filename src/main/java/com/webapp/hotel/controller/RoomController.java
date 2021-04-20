@@ -1,5 +1,7 @@
 package com.webapp.hotel.controller;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -62,6 +64,8 @@ public class RoomController {
 		//model.addAttribute("Room", room);
 		booking.setRoom(room);
 		booking.setCreatedAt(new Date());
+		//booking.setCost(roomService.getPricebyid(room.getId()));
+		booking.setCost(bookService.calcularPrecio(roomService.getPricebyid(room.getId()), booking.isBreakfastIncluded(), booking.isParking(), booking.isFreeCancelation(), ChronoUnit.DAYS.between(booking.getCheckIn(), booking.getCheckOut())));
 		bookService.addBook(booking);
 		return "booking-success";
 	}

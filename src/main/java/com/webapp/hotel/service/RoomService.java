@@ -29,4 +29,7 @@ public class RoomService {
 		
 	}
 	
+	public Float getPricebyid (Long id) {
+		return getRoom(id).getPrice();
+	}
 }

@@ -1,5 +1,6 @@
 package com.webapp.hotel.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,20 +8,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Consulta {
 
 	 @DateTimeFormat(pattern = "yyyy-MM-dd")//Fortmateo(Comandante) de la fecha para que no se rompa con la view de Thymeleaft
-	 private Date fechaInicio;
+	 private LocalDate fechaInicio;
 	 @DateTimeFormat(pattern = "yyyy-MM-dd")//Fortmateo(Comandante) de la fecha para que no se rompa con la view de Thymeleaft
-	 private Date fechaFin;
+	 private LocalDate fechaFin;
 	 private int cantPersonas;
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	public int getCantPersonas() {
