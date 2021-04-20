@@ -6,7 +6,7 @@ Aplicación web de un hotel desarrollado en Spring Boot/PostgreSQL/Bootstrap por
 * Modelado y mapeo de clases.
 * Base de datos funcional.
 * Front-end básico.
-* Registro de usuario, falta acomodar unas cosas en el login y logout.
+* Registro de usuario.
 * Disponibilidad de habitaciones.
 * Reserva de habitación con opción de desayuno, estacionamiento y cancelación gratis.
 * Página de confirmación de reserva.
