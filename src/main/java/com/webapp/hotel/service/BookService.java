@@ -32,8 +32,8 @@ public class BookService {
 		bookRepository.save(book);
 	}
 	
-	public List<Booking> allBooksbyUserid(User user){
-		return bookRepository.findAllbyUserid(user.getId());
+	public List<Booking> allBooksbyUserid(Long id){
+		return bookRepository.findAllbyUserid(id);
 	}
 
 	public float calcularPrecio(Float cost, boolean breakfastIncluded, boolean parking, boolean freeCancelation, long dias) {

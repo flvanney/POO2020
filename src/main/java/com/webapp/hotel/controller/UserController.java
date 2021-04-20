@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webapp.hotel.service.BookService;
 import com.webapp.hotel.service.UserService;
+import com.webapp.hotel.entity.Booking;
 import com.webapp.hotel.entity.User;
 
 @Controller
@@ -22,6 +24,10 @@ public class UserController {
 
 	@Autowired
 	private UserService userservice;
+	
+	@Autowired
+	private BookService bookservice;
+	
 	
 	// Formulario de login
 	@GetMapping("/login")
@@ -42,8 +48,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{id}")
-	public User getUser(@PathVariable Long id) {
-	    return userservice.getUser(id);
+	public String getUser(@PathVariable Long id, Model model) {
+		List<Booking> reservas = bookservice.allBooksbyUserid(id);
+		model.addAttribute("Booking", reservas);
+	    return "booking-list";
 	}
 	
 	

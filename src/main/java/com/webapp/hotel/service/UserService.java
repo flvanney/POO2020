@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.webapp.hotel.entity.Booking;
 import com.webapp.hotel.entity.User;
+import com.webapp.hotel.repository.BookRepository;
 import com.webapp.hotel.repository.UserRepository;
 
 @Service
@@ -18,6 +20,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
 
 	public List<User> retrieveAllUsers() {
 		return userRepository.findAll();
@@ -52,6 +57,10 @@ public class UserService {
 	
 	public User findUserByUsername(String username) {
 		return userRepository.findUserByUsername(username);
+	}
+	
+	public List<Booking> retrieveUserBookingsbyId(Long id){
+		return bookRepository.findAllbyUserid(id);
 	}
 	
 }

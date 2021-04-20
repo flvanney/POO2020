@@ -10,8 +10,7 @@ import com.webapp.hotel.entity.Booking;
 
 public interface BookRepository extends JpaRepository<Booking, Long>{
 
-	@Query ("Select b From Booking b where b.guest = :id")
-	public List<Booking> findAllbyUserid(
-			@Param("id") Long id);	
+	@Query ("select b from Booking b where b.guest.id = :id")
+	public List<Booking> findAllbyUserid(@Param("id") Long id);	
 
 }
