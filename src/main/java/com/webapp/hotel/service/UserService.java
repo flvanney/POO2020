@@ -59,6 +59,10 @@ public class UserService {
 		return userRepository.findUserByUsername(username);
 	}
 	
+	public Long findUserIDByUsername(String username) {
+		return userRepository.findUserIDByUsername(username);
+	}
+	
 	public List<Booking> retrieveUserBookingsbyId(Long id){
 		return bookRepository.findAllbyUserid(id);
 	}
