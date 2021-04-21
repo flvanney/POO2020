@@ -3,6 +3,8 @@ package com.webapp.hotel.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -46,15 +48,7 @@ public class UserController {
 	public List<User> retriveAllUsers(){
 		return userservice.retrieveAllUsers();
 	}
-	
-	@GetMapping("/users/{id}")
-	public String getUser(@PathVariable Long id, Model model) {
-		List<Booking> reservas = bookservice.allBooksbyUserid(id);
-		model.addAttribute("Booking", reservas);
-	    return "booking-list";
-	}
-	
-	
+
 	@GetMapping("/users/new")
 	public String crearUsuario(Model model){
 		model.addAttribute("User", new User());
@@ -68,6 +62,22 @@ public class UserController {
 		userservice.addUser(user);
 		return "redirect:/login";
 	}
+	
+	@GetMapping("/home")
+    public String dashboardPageList(Model model, @AuthenticationPrincipal UserDetails currentUser ) {
+		User user = (User) userservice.findUserByUsername(currentUser.getUsername());
+        model.addAttribute("currentStudent", user);
+        List<Booking> reservas = bookservice.allBooksbyUserid(userservice.findUserIDByUsername(currentUser.getUsername()));
+		model.addAttribute("Booking", reservas);
+        return "booking-list";
+    }
+	
+	
+	/*
+	 * @GetMapping("/users/{id}") public String getUser(@PathVariable Long id, Model
+	 * model) { List<Booking> reservas = bookservice.allBooksbyUserid(id);
+	 * model.addAttribute("Booking", reservas); return "booking-list"; }
+	 */
 	
 }
 
