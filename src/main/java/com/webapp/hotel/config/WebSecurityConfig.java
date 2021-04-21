@@ -6,10 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.webapp.hotel.service.UserServiceImp;
 
@@ -17,6 +19,7 @@ import com.webapp.hotel.service.UserServiceImp;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
 	@Autowired
 	private UserServiceImp userDetailsService;
 	
@@ -24,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.cors().and().csrf().disable()
 		.authorizeRequests()
+			.antMatchers(HttpMethod.GET, "/", "/index.html", "/resources/**", "/static/**", "/favicon.ico", "/**/*.js", "/**/*.js.map", "/**/*.css", "/assets/images/*.png", "/assets/images/*.jpg", "/assets/images/*.jpeg", "/assets/images/*.gif", "/**/*.ttf", "/**/*.json", "/**/*.woff", "/**/*.woff2", "/**/*.eot", "/**/*.svg", "/**/*.png").permitAll()
 			.antMatchers("/users", "/users/new", "/", "/rooms/disponibles").permitAll()
 			.antMatchers(HttpMethod.POST, "/users/new").permitAll()
 			.anyRequest().authenticated()
@@ -31,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/login").permitAll()
 			.defaultSuccessUrl("/index", true)
 			.failureUrl("/error")
-		.and()
+			.and()
 			.logout().permitAll()
 			.logoutSuccessUrl("/index")
 		;
@@ -46,4 +50,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder()); 
     }
 	
+	// @Override
+	// public void configure(WebSecurity web) {
+	// 	web.ignoring().antMatchers("/resources/**", "/static/**");
+	// }
+
 }

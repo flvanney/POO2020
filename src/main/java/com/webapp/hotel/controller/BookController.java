@@ -28,39 +28,18 @@ public class BookController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	/*
-	@GetMapping("/booking")
-	public String createBooking(Model model) {
-		model.addAttribute("Booking", new Booking());
-		return "booking-form";
-		}
-	*/
 	
 	@GetMapping("/booking/{id}")
 	public String getPaymentForm(@PathVariable Long id, Model model) {
 		model.addAttribute("Payment", new Payment());
 		model.addAttribute("reserva", bookService.getBook(id));
 		return "booking-payment";
-		
 	}
 	
 	@PostMapping("/booking/{id}")
 	public String addPayment(@ModelAttribute Payment payment, Booking book, Model model) {
 		model.addAttribute("Payment", payment);
-		payment.setBooking(book);
-		paymentService.addPayment(payment);
+		paymentService.addPayment(payment, book);
 		return "redirect:/home";
 	}
-	/*
-	 * @PostMapping("/rooms/{id}") 
-	 * public String addBook(@ModelAttribute Booking booking, Room room, Model model) { 
-	 * model.addAttribute("Booking", booking);
-	 * //model.addAttribute("Room", room); booking.setRoom(room);
-	 * booking.setCreatedAt(new Date());
-	 * //booking.setCost(roomService.getPricebyid(room.getId()));
-	 * booking.setCost(bookService.calcularPrecio(roomService.getPricebyid(room.getId()), booking.isBreakfastIncluded(), booking.isParking(),booking.isFreeCancelation(), ChronoUnit.DAYS.between(booking.getCheckIn(),booking.getCheckOut()))); bookService.addBook(booking); 
-	 * return "booking-success"; }
-	 */
-	
-	
 }

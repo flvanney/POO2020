@@ -61,12 +61,7 @@ public class RoomController {
 	@PostMapping("/rooms/{id}")
 	public String addBook(@ModelAttribute Booking booking, Room room, Model model) {
 		model.addAttribute("Booking", booking);
-		//model.addAttribute("Room", room);
-		booking.setRoom(room);
-		booking.setCreatedAt(new Date());
-		//booking.setCost(roomService.getPricebyid(room.getId()));
-		booking.setCost(bookService.calcularPrecio(roomService.getPricebyid(room.getId()), booking.isBreakfastIncluded(), booking.isParking(), booking.isFreeCancelation(), ChronoUnit.DAYS.between(booking.getCheckIn(), booking.getCheckOut())));
-		bookService.addBook(booking);
+		bookService.addBook(booking, room);
 		return "booking-success";
 	}
 	

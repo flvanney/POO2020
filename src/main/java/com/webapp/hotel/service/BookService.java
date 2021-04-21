@@ -1,5 +1,7 @@
 package com.webapp.hotel.service;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.webapp.hotel.entity.Booking;
 import com.webapp.hotel.entity.Room;
-import com.webapp.hotel.entity.User;
 import com.webapp.hotel.repository.BookRepository;
 
 @Service
@@ -20,9 +21,10 @@ public class BookService {
 	private BookRepository bookRepository;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private RoomService roomService;
 	
-	
-	public void addBook(Booking book) {
+	public void addBook(Booking book, Room room) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) {
 		  String username = ((UserDetails)principal).getUsername();
@@ -31,6 +33,10 @@ public class BookService {
 		 String username = principal.toString();
 		 book.setGuest(userService.findUserByUsername(username));
 		}
+		book.setRoom(room);
+		book.setCreatedAt(new Date());
+		book.setPaid(false);
+		book.setCost(this.calcularPrecio(roomService.getPricebyid(room.getId()), book.isBreakfastIncluded(), book.isParking(), book.isFreeCancelation(), ChronoUnit.DAYS.between(book.getCheckIn(), book.getCheckOut())));
 		bookRepository.save(book);
 	}
 	
@@ -54,5 +60,9 @@ public class BookService {
 	public Booking getBook(Long id) {
 	    return bookRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
 	}
-		
+	
+	public void payBook(Booking book) {
+		bookRepository.payBook(book.getId());
+	}
+	
 }
