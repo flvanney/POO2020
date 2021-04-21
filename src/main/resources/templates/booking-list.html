@@ -12,26 +12,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-<table>
-                <thead>
-                    <tr>
-                        <th>check in</th>
-                        <th>check out</th>
-                        <th>costo</th>
-                        <th>parking</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="reserva : ${Booking}">
-                        <td th:text="${reserva.checkIn}"></td>
-                        <td th:text="${reserva.checkOut}"></td>
-                        <td th:text="${reserva.cost}"></td>
-                        <td th:text="${reserva.parking}"></td>
-                        <td>
-                            <a th:href="@{/booking/{id}(id = ${reserva.id})}" th:if="${not reserva.isPaid}" class="btn btn-primary">
-=======
-    <table>
+   <table>
         <thead>
             <tr>
                 <th>check in</th>
@@ -47,8 +28,7 @@
                 <td th:text="${reserva.cost}"></td>
                 <td th:text="${reserva.parking}"></td>
                 <td>
-                    <a th:href="@{/booking/{id}(id = ${reserva.id})}" class="btn btn-primary">
->>>>>>> branch 'master' of https://github.com/flvanney/POO2020.git
+                    <a th:href="@{/booking/{id}(id = ${reserva.id})}" th:if="${not reserva.isPaid}" class="btn btn-primary">
         					Pagar reserva!
    	 					</a>
                 </td>
