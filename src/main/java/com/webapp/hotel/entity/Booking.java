@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,11 +37,14 @@ public class Booking {
     private boolean breakfastIncluded;
     private boolean parking;
     private boolean freeCancelation;
-    public static final Float BREAKFASTCOST = 100.00f; //Costos como variables estaticas
+    private boolean isPaid;
+    private Float cost;
+    
+    //buscar por ignore en jpa
+	public static final Float BREAKFASTCOST = 100.00f; //Costos como variables estaticas
     public static final Float PARKINGCOST = 100.00f;
     public static final Float FREECANCELATIONCOST = 500.00f;
-    private Float cost;
-	
+    
     
     public Long getId() {
 		return id;
@@ -107,6 +109,10 @@ public class Booking {
 	public void setCost(Float cost) {
 		this.cost = cost;
 	}
-
-	
+	public boolean isPaid() {
+		return isPaid;
+	}
+	public void setPaid(boolean isPaid) {
+		this.isPaid = isPaid;
+	}
 }

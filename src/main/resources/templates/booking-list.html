@@ -27,7 +27,7 @@
                         <td th:text="${reserva.cost}"></td>
                         <td th:text="${reserva.parking}"></td>
                         <td>
-                            <a th:href="@{/booking/{id}(id = ${reserva.id})}" class="btn btn-primary">
+                            <a th:href="@{/booking/{id}(id = ${reserva.id})}" th:if="${not reserva.isPaid}" class="btn btn-primary">
         					Pagar reserva!
    	 					</a>
                         </td>
