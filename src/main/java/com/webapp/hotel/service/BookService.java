@@ -1,6 +1,7 @@
 package com.webapp.hotel.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.webapp.hotel.entity.Booking;
+import com.webapp.hotel.entity.Room;
 import com.webapp.hotel.entity.User;
 import com.webapp.hotel.repository.BookRepository;
 
@@ -47,6 +49,10 @@ public class BookService {
 			extras += Booking.FREECANCELATIONCOST;
 		costototal = (cost+extras)*dias;
 		return costototal;
+	}
+	
+	public Booking getBook(Long id) {
+	    return bookRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
 	}
 		
 }
