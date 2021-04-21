@@ -12,11 +12,11 @@
 
     <header></header>
 
-    <div class="bg-image container-fluid" style="background-image: url(../img/bg.png); height: 100vh; width: 100vw;">
+    <div class="bg-image container-fluid" style="background-image: url(../static/bg.png); height: 100vh; width: 100vw;">
 
         <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-default p-md-3 bg-transparent">
             <div class="container-fluid">
-                <a class="navbar-brand"><img src="../img/logo.png" class="img-responsive" height="110"></a>
+                <a class="navbar-brand"><img src="../static/logo.png" class="img-responsive" height="110"></a>
                 <span class="name m-lg-4 fs-2 align-middle"><b>Hotel POO</b></span>
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
@@ -41,7 +41,7 @@
                     <br>
 
                     <div th:if="${loginError}" class="alert alert-danger align-middle text-center" role="alert">
-                        <b>Usuario o contraseña incorrecto</b>
+                        <b>Usuario o contraseña incorrecto.</b>
                     </div>
 
                     <form th:action="@{/login}" method="post">
@@ -76,7 +76,7 @@
 
                 <div class="imagen">
                     <br><br><br>
-                    <img src="../img/login.svg" class="" alt="" height="450">
+                    <img src="../static/login.svg" class="" alt="" height="450">
                 </div>
 
             </div>
