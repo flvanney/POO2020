@@ -53,13 +53,16 @@ public class BookService {
 	public float calcularPrecio(Float cost, boolean breakfastIncluded, boolean parking, boolean freeCancelation, long dias) {
 		Float extras = 0.0f;
 		Float costototal = 0.0f;
-		if (breakfastIncluded = true);
+		if (breakfastIncluded == true) {
 			extras += Booking.BREAKFASTCOST;
-		if (parking = true);
+			}
+		if (parking == true) {
 			extras += Booking.PARKINGCOST;
+			}
 		costototal = (cost+extras)*dias;
-		if (freeCancelation = true);
+		if (freeCancelation == true) {
 		costototal += Booking.FREECANCELATIONCOST;
+			}
 		return costototal;
 	}
 	
@@ -82,11 +85,13 @@ public class BookService {
 	
 	public Float calculoMontoReembolso(Booking book) {
 		LocalDate lt = LocalDate.now();
-		if (book.isFreeCancelation() && 2 > ChronoUnit.DAYS.between(book.getCheckIn(), lt)) {
-			return book.getCost();
-		}
-		else if (book.isFreeCancelation() && 2 <= ChronoUnit.DAYS.between(book.getCheckIn(), lt)) {
-			return (book.getCost() * 0.8f);
+		if (book.isFreeCancelation()) {
+			if (ChronoUnit.DAYS.between(lt, book.getCheckIn()) > 2){
+				return book.getCost();
+			}
+			else{
+				return (book.getCost() * 0.8f);
+			}
 		}
 		else
 			return 0f;
