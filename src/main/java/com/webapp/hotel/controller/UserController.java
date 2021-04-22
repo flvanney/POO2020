@@ -43,6 +43,11 @@ public class UserController {
 	  model.addAttribute("loginError", true);
 	  return "login";
 	}
+
+	// @GetMapping("/home")
+	// public String home() {
+	//   return "home";
+	// }
 	
 	@GetMapping("/users")
 	public List<User> retriveAllUsers(){

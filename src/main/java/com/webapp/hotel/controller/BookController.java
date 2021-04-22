@@ -22,7 +22,11 @@ public class BookController {
 	
 	@Autowired
 	private PaymentService paymentService;
-	
+
+	// @GetMapping("/booking/list")
+	// public String listadoReservas() {
+	// 	return "booking-list";
+	// }
 	
 	@GetMapping("/booking/{id}")
 	public String getPaymentForm(@PathVariable Long id, Model model) {
@@ -35,7 +39,7 @@ public class BookController {
 	public String addPayment(@ModelAttribute Payment payment, Booking book, Model model) {
 		model.addAttribute("Payment", payment);
 		paymentService.addPayment(payment, book);
-		return "redirect:/home";
+		return "booking-success";
 	}
 	
 	@GetMapping("/booking/{id}/cancelation")

@@ -25,7 +25,7 @@
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="index" th:href="@{/index}" class="nav-link btn btn-outline-primary btn-lg align-middle me-5" role="button"><b>Volver a la página principal</b></a>
+                        <a href="/home" class="nav-link btn btn-outline-primary btn-lg align-middle me-5" role="button"><b>Volver al home</b></a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
                         <a href="/logout" class="nav-link btn btn-outline-primary btn-lg align-middle me-5" role="button"><b>Cerrar sesión</b></a>
@@ -51,22 +51,26 @@
                                 <tr>
                                     <th scope="col">Check-in</th>
                                     <th scope="col">Check-out</th>
+                                    <th scope="col">Estacionamiento</th>
+                                    <th scope="col">Desayuno</th>
+                                    <th scope="col">Cancelación gratis</th>
                                     <th scope="col">Costo</th>
-                                    <th scope="col">Parking</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="reserva : ${Booking}">
                                     <td th:text="${reserva.checkIn}"></td>
                                     <td th:text="${reserva.checkOut}"></td>
-                                    <td th:text="${reserva.cost}"></td>
                                     <td th:text="${reserva.parking}"></td>
+                                    <td th:text="${reserva.breakfastIncluded}"></td>
+                                    <td th:text="${reserva.freeCancelation}"></td>
+                                    <td th:text="${reserva.cost}"></td>
                                     <td>
                                         <a th:href="@{/booking/{id}(id = ${reserva.id})}" th:if="${not reserva.isPaid}" class="btn btn-primary">
                                             <b>Pagar</b>
                                         </a>
                                         <a th:href="@{/booking/{id}/cancelation(id = ${reserva.id})}" th:if="${not reserva.isCanceled and reserva.isPaid}" class="btn btn-primary">
-                                        	<b>Cancelar Reserva</b>
+                                            <b>Cancelar reserva</b>
                                         </a>
                                     </td>
                                 </tr>
