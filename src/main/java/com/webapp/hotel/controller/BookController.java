@@ -41,6 +41,7 @@ public class BookController {
 	@GetMapping("/booking/{id}/cancelation")
 	public String getCancelationForm(@PathVariable Long id, Model model) {
 		model.addAttribute("reserva", bookService.getBook(id));
+		model.addAttribute("monto", bookService.calculoMontoReembolso(bookService.getBook(id)));
 		return "cancelation-form";
 	}
 	

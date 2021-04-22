@@ -57,9 +57,9 @@ public class BookService {
 			extras += Booking.BREAKFASTCOST;
 		if (parking = true);
 			extras += Booking.PARKINGCOST;
-		if (freeCancelation = true);
-			extras += Booking.FREECANCELATIONCOST;
 		costototal = (cost+extras)*dias;
+		if (freeCancelation = true);
+		costototal += Booking.FREECANCELATIONCOST;
 		return costototal;
 	}
 	
@@ -78,5 +78,17 @@ public class BookService {
 		cancelation.setBooking(book);
 		cancelationRepository.save(cancelation);
 		bookRepository.cancelBook(book.getId());
+	}
+	
+	public Float calculoMontoReembolso(Booking book) {
+		LocalDate lt = LocalDate.now();
+		if (book.isFreeCancelation() && 2 > ChronoUnit.DAYS.between(book.getCheckIn(), lt)) {
+			return book.getCost();
+		}
+		else if (book.isFreeCancelation() && 2 <= ChronoUnit.DAYS.between(book.getCheckIn(), lt)) {
+			return (book.getCost() * 0.8f);
+		}
+		else
+			return 0f;
 	}
 }
