@@ -44,10 +44,10 @@ public class UserController {
 	  return "login";
 	}
 
-	// @GetMapping("/home")
-	// public String home() {
-	//   return "home";
-	// }
+	@GetMapping("/home")
+		public String home() {
+		return "home";
+	}
 	
 	@GetMapping("/users")
 	public List<User> retriveAllUsers(){
@@ -68,7 +68,7 @@ public class UserController {
 		return "redirect:/login";
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("/booking/list")
     public String dashboardPageList(Model model, @AuthenticationPrincipal UserDetails currentUser ) {
 		User user = (User) userservice.findUserByUsername(currentUser.getUsername());
         model.addAttribute("currentStudent", user);
