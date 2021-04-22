@@ -1,9 +1,5 @@
 package com.webapp.hotel.controller;
 
-
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.webapp.hotel.entity.Booking;
+import com.webapp.hotel.entity.Cancelacion;
 import com.webapp.hotel.entity.Payment;
-import com.webapp.hotel.entity.Room;
-import com.webapp.hotel.entity.User;
 import com.webapp.hotel.service.BookService;
 import com.webapp.hotel.service.PaymentService;
 
@@ -41,5 +36,17 @@ public class BookController {
 		model.addAttribute("Payment", payment);
 		paymentService.addPayment(payment, book);
 		return "redirect:/home";
+	}
+	
+	@GetMapping("/booking/{id}/cancelation")
+	public String getCancelationForm(@PathVariable Long id, Model model) {
+		model.addAttribute("reserva", bookService.getBook(id));
+		return "cancelation-form";
+	}
+	
+	@PostMapping("/booking/{id}/cancelation")
+	public String addCancelation(Booking book, Model model) {
+		bookService.addCancelation(book);
+		return "cancelation-success";
 	}
 }

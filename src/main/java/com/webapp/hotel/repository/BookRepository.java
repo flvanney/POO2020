@@ -20,4 +20,10 @@ public interface BookRepository extends JpaRepository<Booking, Long>{
 	@Transactional
 	@Query ("update Booking b set b.isPaid='true' where b.id = :id")
 	public void payBook(@Param("id") Long id);
+	
+	@Modifying
+	@Transactional
+	@Query ("update Booking b set b.isCanceled='true' where b.id = :id")
+	public void cancelBook(@Param("id") Long id);
+	
 }

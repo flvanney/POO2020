@@ -1,5 +1,6 @@
 package com.webapp.hotel.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ public class Cancelacion {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="cancelacionId")
 	private Long id;
-	private Date createdAt;
+	private LocalDate createdAt;
 	@OneToOne
 	@JoinColumn(name = "BOOKING_ID")
 	private Booking booking;
@@ -30,10 +31,10 @@ public class Cancelacion {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Booking getBooking() {

@@ -73,14 +73,14 @@
                             <div class="col-12">
                                 <form class="form-group" action="#" th:action="@{/booking/{id}(id=${reserva.id})}" th:object="${Payment}" method="post">
                                     <div class="row">
-                                        <div class="form-floating my-1 col-6">
+<!--                                         <div class="form-floating my-1 col-6">
                                             <input type="text" name="firstName" class="form-control" id="InputNombre" placeholder="Ingrese su nombre" th:value="*{firstName}" required>
                                             <label for="InputNombre">Nombre del titular</label>
                                         </div>
                                         <div class="form-floating my-1 col-6">
                                             <input type="text" name="lastName" class="form-control" id="InputApellido" placeholder="Ingrese su apellido" th:value="*{lastName}" required>
                                             <label for="InputApellido">Apellido del titular</label>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="row">
                                         <div class="form-floating my-1 col-6">
@@ -92,7 +92,7 @@
                                             <label for="InputCardNumber">Número de la tarjeta</label>
                                         </div>
                                     </div>
-                                    <div class="row">
+<!--                                     <div class="row">
                                         <div class="form-floating my-1 col-6">
                                             <input type="text" name="fechaExp" class="form-control" id="InputFechaExp" placeholder="Ingrese la fecha de vencimiento" th:value="*{fechaExp}" required>
                                             <label for="InputFechaExp">Fecha de vencimiento</label>
@@ -105,7 +105,7 @@
                                     <div class="form-floating mt-1 mb-3">
                                         <input type="number" name="numeroDni" class="form-control" id="InputNumeroDni" placeholder="Ingrese el número de documento del titular" th:value="*{numeroDni}" required>
                                         <label for="InputNumeroDni">Número de documento del titular</label>
-                                    </div>
+                                    </div> -->
                                     <button type="submit" class="btn btn-primary btn-lg mt-1 mx-3"><b>Realizar pago</b></button>
                                     <button type="reset" class="btn btn-secondary btn-lg mt-1 mx-2"><b>Reestablecer campos</b></button>
                                 </form>

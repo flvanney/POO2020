@@ -1,5 +1,6 @@
 package com.webapp.hotel.service;
 
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
@@ -11,8 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.webapp.hotel.entity.Booking;
+import com.webapp.hotel.entity.Cancelacion;
 import com.webapp.hotel.entity.Room;
 import com.webapp.hotel.repository.BookRepository;
+import com.webapp.hotel.repository.CancelationRepository;
 
 @Service
 public class BookService {
@@ -23,6 +26,8 @@ public class BookService {
 	private UserService userService;
 	@Autowired
 	private RoomService roomService;
+	@Autowired
+	private CancelationRepository cancelationRepository;
 	
 	public void addBook(Booking book, Room room) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -36,6 +41,7 @@ public class BookService {
 		book.setRoom(room);
 		book.setCreatedAt(new Date());
 		book.setPaid(false);
+		book.setCanceled(false);
 		book.setCost(this.calcularPrecio(roomService.getPricebyid(room.getId()), book.isBreakfastIncluded(), book.isParking(), book.isFreeCancelation(), ChronoUnit.DAYS.between(book.getCheckIn(), book.getCheckOut())));
 		bookRepository.save(book);
 	}
@@ -65,4 +71,12 @@ public class BookService {
 		bookRepository.payBook(book.getId());
 	}
 	
+	public void addCancelation(Booking book) {
+		LocalDate lt = LocalDate.now();
+		Cancelacion cancelation = new Cancelacion();
+		cancelation.setCreatedAt(lt);
+		cancelation.setBooking(book);
+		cancelationRepository.save(cancelation);
+		bookRepository.cancelBook(book.getId());
+	}
 }

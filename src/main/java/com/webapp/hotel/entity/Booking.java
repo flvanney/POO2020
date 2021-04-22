@@ -38,6 +38,7 @@ public class Booking {
     private boolean parking;
     private boolean freeCancelation;
     private boolean isPaid;
+	private boolean isCanceled;
     private Float cost;
     
     //buscar por ignore en jpa
@@ -114,5 +115,11 @@ public class Booking {
 	}
 	public void setPaid(boolean isPaid) {
 		this.isPaid = isPaid;
+	}
+    public boolean isCanceled() {
+		return isCanceled;
+	}
+	public void setCanceled(boolean isCanceled) {
+		this.isCanceled = isCanceled;
 	}
 }
